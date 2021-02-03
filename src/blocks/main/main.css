@@ -1,0 +1,11 @@
+.main {
+    display: grid;
+    grid-template-rows: auto 51px auto;
+    align-self: start;
+}
+
+@media screen and (max-width: 544px) {
+    .main {
+        grid-template-rows: auto 36px auto;
+    }
+}

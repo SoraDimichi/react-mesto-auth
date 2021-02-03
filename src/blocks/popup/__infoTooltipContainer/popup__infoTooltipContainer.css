@@ -1,0 +1,15 @@
+.popup__infoTooltipContainer {
+  grid-area: 2 / 2 / 3 / 3;
+  display: grid;
+  grid-template-columns: minmax(19px, 36px) 358px minmax(19px, 36px);
+  grid-template-rows: 120px 32px min-content;
+  background-color: white;
+  border-radius: 10px;
+  padding: 60px 0 60px 0;
+}
+
+@media screen and (max-width: 420px) {
+  .popup__infoTooltipContainer {
+    padding: 30px 0 33px 0;
+  }
+}

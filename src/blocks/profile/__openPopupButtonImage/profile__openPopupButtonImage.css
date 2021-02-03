@@ -1,0 +1,9 @@
+.profile__openPopupButtonImage {
+  pointer-events: none;
+}
+
+@media screen and (max-width: 544px) {
+  .profile__openPopupButtonImage {
+    width: 72%;
+  }
+}

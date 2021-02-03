@@ -1,0 +1,9 @@
+.authForm__fieldSet {
+  grid-area: 2 / 1 / 3 / 2;
+  display: flex;
+  border: none;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  align-self: stretch;
+}

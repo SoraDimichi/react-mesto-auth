@@ -1,0 +1,24 @@
+.card__deleteButton {
+  grid-area: 1 / 1 / 2 / 6;
+  padding: 0;
+  border: none;
+  outline: none;
+  font: inherit;
+  color: inherit;
+  background: none;
+  align-self: center;
+  position: absolute;
+  top: 18px;
+  right: 15px;
+}
+
+.card__deleteButton:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 700px) {
+  .card__deleteButton:hover {
+    opacity: 1;
+  }
+}

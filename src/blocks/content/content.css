@@ -1,0 +1,7 @@
+.content {
+  grid-area: 3 / 3 / 4 / 4;
+  justify-self: stretch;
+  display: grid;
+}
+
+

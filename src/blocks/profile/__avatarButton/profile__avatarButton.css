@@ -1,0 +1,36 @@
+.profile__avatarButton {
+  background: black;
+  transition: opacity 0.3s ease-in-out;
+  opacity: 0;
+  grid-area: 1 / 1 / 4 / 2;
+  border-radius: 50%;
+  overflow: hidden;
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: 120px;
+  height: 120px;
+  outline: none;
+  color: inherit;
+  font: inherit;
+  line-height: normal;
+  cursor: pointer;
+  z-index: 0;
+}
+
+.profile__avatarButton:hover{
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 700px) {
+  .profile__avatarButton::after {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 544px) {
+  .profile__avatarButton {
+    grid-area: 1 / 1 / 2 / 5;
+    justify-self: center;
+  }
+}

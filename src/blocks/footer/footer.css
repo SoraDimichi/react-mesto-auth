@@ -1,0 +1,15 @@
+@import url('__copyright/footer__copyright.css');
+
+.footer {
+  grid-area: 5 / 3 / 6 / 4;
+  align-self: end;
+  display: grid;
+  grid-template-rows: auto 60px;
+  justify-content: start;
+}
+
+@media screen and (max-width: 544px) {
+  .footer {
+    grid-template-rows: auto 33px;
+  }
+}

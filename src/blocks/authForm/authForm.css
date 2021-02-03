@@ -1,0 +1,19 @@
+@import url('__field/authForm__field.css');
+@import url('__fieldSet/authForm__fieldSet.css');
+@import url('__inputText/authForm__inputText.css');
+@import url('__title/authForm__title.css');
+@import url('__submitButton/authForm__submitButton.css');
+@import url('__navLink/authForm__navLink.css');
+
+.authForm {
+  grid-area: 1 / 2 / 2 / 3;
+  display: grid;
+  align-content: stretch;
+  grid-template-rows: minmax(1px, 150px) auto min-content;
+}
+
+@media screen and (max-width: 420px) {
+  .authForm {
+    padding: 30px 0 33px 0;
+  }
+}

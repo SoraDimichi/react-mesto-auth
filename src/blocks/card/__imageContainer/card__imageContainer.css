@@ -1,0 +1,11 @@
+.card__imageContainer {
+  grid-area: 1 / 1 / 2 / 6;
+  width: 100%;
+  height: 282px;
+  background-size: cover;
+  background-position: center center;
+}
+
+.card__imageContainer:hover {
+  cursor: pointer;
+}

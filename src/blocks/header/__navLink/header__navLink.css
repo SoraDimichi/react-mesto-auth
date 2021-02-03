@@ -1,0 +1,17 @@
+.header__navLink {
+  grid-area: 2 / 6 / 3 / 7;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: right;
+  color: #fff;
+  margin: 0;
+  text-decoration: none;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.header__navLink:hover {
+  opacity: 0.8;
+}

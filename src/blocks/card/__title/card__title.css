@@ -1,0 +1,16 @@
+.card__title {
+  margin: 0;
+  grid-area: 2 / 2 / 7 / 3;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 1.5rem;
+  color: #000;
+  font-weight: 900;
+  line-height: 1;
+  align-self: center;
+}
+
+.card__title:hover {
+  cursor: pointer;
+}

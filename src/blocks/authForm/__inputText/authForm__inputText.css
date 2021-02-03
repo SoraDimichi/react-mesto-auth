@@ -1,0 +1,26 @@
+.authForm__inputText {
+  padding: 0 0 8px 0;
+  line-height: 17px;
+  font-size: 14px;
+  color: #fff;
+  border: 0;
+  border-bottom: 1px solid #ccc;
+  border-radius: 0;
+  background-color: inherit;
+  width: 100%;
+}
+
+.authForm__inputText::placeholder {
+  color: #c4c4c4;
+  font-family: 'Inter', 'Arial', sans-serif;
+}
+
+.authForm__inputText:focus {
+  outline: 0;
+}
+
+@media screen and (max-width: 420px) {
+  .popup__formInputText::placeholder {
+    font-size: 12px;
+  }
+}

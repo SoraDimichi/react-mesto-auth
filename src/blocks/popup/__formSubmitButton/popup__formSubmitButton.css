@@ -1,0 +1,24 @@
+.popup__formSubmitButton {
+  grid-area: 12 / 2 / 13 / 3;
+  padding: 14px 0 13px 0;
+  outline: none;
+  font-size: 18px;
+  line-height: 22px;
+  border: solid #000 2px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 2px;
+  margin: 49px 0 0 0;
+  width: 100%;
+  cursor: pointer;
+}
+
+.popup__closeButton:hover {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 420px) {
+  .popup__formSubmitButton {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,26 @@
+.profile__avatar {
+  grid-area: 1 / 1 / 4 / 2;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+}
+
+.profile__avatar:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 700px) {
+  .profile__avatar:hover {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 544px) {
+  .profile__avatar {
+    grid-area: 1 / 1 / 2 / 5;
+    justify-self: center;
+  }
+}

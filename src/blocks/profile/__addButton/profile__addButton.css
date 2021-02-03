@@ -1,0 +1,40 @@
+.profile__addButton {
+  user-select: none;
+  grid-area: 1 / 7 / 4 / 8;
+  border: solid 1px #fff;
+  outline: none;
+  font: inherit;
+  color: inherit;
+  background: none;
+  align-self: center;
+  font-size: 2.7rem;
+  font-weight: 200;
+  line-height: 0.95;
+  border-radius: 1px;
+  padding-bottom: 6px;
+}
+
+.profile__addButton:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 700px) {
+  .profile__addButton {
+    grid-area: 5 / 1 / 6 / 6;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .profile__addButton:hover {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 544px) {
+  .profile__addButton {
+    grid-area: 7 / 1 / 8 / 5;
+    font-size: 2.1rem;
+    line-height: 1.26;
+  }
+}

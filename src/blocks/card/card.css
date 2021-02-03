@@ -1,0 +1,18 @@
+@import url('__title/card__title.css');
+@import url('__imageContainer/card__imageContainer.css');
+@import url('__deleteButton/card__deleteButton.css');
+@import url('__deleteButtonImage/card__deleteButtonImage.css');
+@import url('__likeButton/card__likeButton.css');
+@import url('__likeCounter/card__likeCounter.css');
+
+.card {
+  margin: 0;
+  border-radius: 3.5%;
+  display: grid;
+  overflow: hidden;
+  background-color: #fff;
+  grid-template-columns: 21px minmax(185px, 1fr) 18px min-content 23px;
+  justify-content: space-between;
+  grid-template-rows: auto 21px auto 3px auto 25px;
+  position: relative;
+}

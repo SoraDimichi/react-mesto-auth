@@ -1,0 +1,8 @@
+
+
+.register {
+  display: grid;
+  grid-template-columns: minmax(19px, 36px) minmax(max-content, 358px) minmax(19px, 36px);
+  grid-template-rows: 1fr 15px auto;
+  justify-content: center;
+}

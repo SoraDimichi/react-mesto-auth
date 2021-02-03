@@ -1,0 +1,9 @@
+.header__homeLink {
+  grid-area: 2 / 1 / 3 / 3;
+}
+
+@media screen and (max-width: 544px) {
+  .header__logo {
+    grid-area: 2 / 2 / 3 / 3;
+  }
+}

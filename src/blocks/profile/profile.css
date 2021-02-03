@@ -1,0 +1,30 @@
+@import url('__avatar/profile__avatar.css');
+@import url('__avatarButton/profile__avatarButton.css');
+@import url('__name/profile__name.css');
+@import url('__about/profile__about.css');
+@import url('__openPopupButton/profile__openPopupButton.css');
+@import url('__openPopupButtonImage/profile__openPopupButtonImage.css');
+@import url('__addButton/profile__addButton.css');
+
+.profile {
+  grid-area: 1 / 1 / 2 / 2;
+  display: grid;
+  grid-template-columns: max-content 28px minmax(0, max-content) 45px 1fr 21px 146px;
+  grid-template-rows: 70px 6px 1fr;
+  overflow: hidden;
+  align-self: start;
+}
+
+@media screen and (max-width: 700px) {
+  .profile {
+    grid-template-columns: max-content 28px minmax(0, max-content) 41px 1fr;
+    grid-template-rows: 70px 6px 1fr 33px auto;
+  }
+}
+
+@media screen and (max-width: 544px) {
+  .profile {
+    grid-template-columns: 1fr minmax(0, max-content) 33px 1fr;
+    grid-template-rows: auto 27px auto 8px auto 33px auto 30px;
+  }
+}

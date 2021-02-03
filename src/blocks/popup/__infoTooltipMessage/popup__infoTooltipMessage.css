@@ -1,0 +1,10 @@
+.popup__infoTooltipMessage {
+  grid-area: 3 / 2 / 4 / 3;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+  color: #000;
+  margin: 0;
+}
