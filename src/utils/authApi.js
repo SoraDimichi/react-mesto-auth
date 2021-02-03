@@ -14,7 +14,7 @@ export const register = (email, password) => fetchData(`${BASE_URL}`, '/signup',
     'Content-Type': 'application/json',
   },
   body: JSON.stringify({ email, password }),
-}).catch((err) => console.log(err));
+});
 
 export const authorize = (email, password) => fetchData(`${BASE_URL}`, '/signin', {
   method: 'POST',
@@ -27,7 +27,7 @@ export const authorize = (email, password) => fetchData(`${BASE_URL}`, '/signin'
     localStorage.setItem('token', data.token);
     return data;
   } return null;
-}).catch((err) => console.log(err));
+});
 
 export const checkToken = (token) => fetchData(`${BASE_URL}`, '/users/me', {
   method: 'GET',
@@ -35,5 +35,4 @@ export const checkToken = (token) => fetchData(`${BASE_URL}`, '/users/me', {
     'Content-Type': 'application/json',
     Authorization: `Bearer ${token}`,
   },
-}).then((data) => data.data)
-  .catch((err) => console.log(err));
+}).then((data) => data.data);

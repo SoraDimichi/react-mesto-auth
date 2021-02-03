@@ -62,7 +62,11 @@ function App() {
     api.deleteCard(card._id).then(() => {
       const newCards = cards.filter((cardIsDeleted) => cardIsDeleted._id !== card._id);
       setCards(newCards);
-    }).catch((err) => new Error(`Ошибка: ${err}`));
+    }).catch((err) => {
+      console.log(err);
+      setInfoTooltipMessage('Что-то пошло не так!\nПопробуйте ещё раз.');
+      setInfoTooltipPopup(true);
+    });
   };
 
   const handleUpdateUser = (data) => {
@@ -71,6 +75,8 @@ function App() {
       closeAllPopups();
     }).catch((err) => {
       console.log(err);
+      setInfoTooltipMessage('Что-то пошло не так!\nПопробуйте ещё раз.');
+      setInfoTooltipPopup(true);
     });
   };
 
@@ -78,7 +84,11 @@ function App() {
     api.postNewCard(data).then((newCard) => {
       setCards([newCard, ...cards]);
       closeAllPopups();
-    }).catch((err) => new Error(`Ошибка: ${err}`));
+    }).catch((err) => {
+      console.log(err);
+      setInfoTooltipMessage('Что-то пошло не так!\nПопробуйте ещё раз.');
+      setInfoTooltipPopup(true);
+    });
   };
 
   const handleCardLike = (card) => {
@@ -88,7 +98,11 @@ function App() {
         cardIsLiked._id === card._id ? newCard : cardIsLiked
       ));
       setCards(newCards);
-    }).catch((err) => new Error(`Ошибка: ${err}`));
+    }).catch((err) => {
+      console.log(err);
+      setInfoTooltipMessage('Что-то пошло не так!\nПопробуйте ещё раз.');
+      setInfoTooltipPopup(true);
+    });
   };
 
   const handleUpdateAvatar = (data) => {
@@ -97,6 +111,8 @@ function App() {
       closeAllPopups();
     }).catch((err) => {
       console.log(err);
+      setInfoTooltipMessage('Что-то пошло не так!\nПопробуйте ещё раз.');
+      setInfoTooltipPopup(true);
     });
   };
 
@@ -105,11 +121,12 @@ function App() {
       if (res) {
         history.push('/sign-in');
         setInfoTooltipMessage('Вы успешно зарегистрировались!');
-      } else {
-        setInfoTooltipMessage('Что-то пошло не так!\nПопробуйте ещё раз.');
       }
-      setInfoTooltipPopup(true);
-    });
+    }).catch((err) => {
+      setInfoTooltipMessage('Что-то пошло не так!\nПопробуйте ещё раз.');
+      console.log(err);
+    })
+      .finally(() => setInfoTooltipPopup(true));
   };
 
   const handleLogin = ({ email, password }) => {
@@ -118,11 +135,12 @@ function App() {
         history.push('/');
         setLoggedIn(true);
         setInfoTooltipMessage('Вы успешно вошли в приложение!');
-      } else {
-        setInfoTooltipMessage('Что-то пошло не так!\nПопробуйте ещё раз.');
       }
-      setInfoTooltipPopup(true);
-    });
+    }).catch((err) => {
+      setInfoTooltipMessage('Что-то пошло не так!\nПопробуйте ещё раз.');
+      console.log(err);
+    })
+      .finally(() => setInfoTooltipPopup(true));
   };
 
   const handleLogout = () => {
@@ -139,6 +157,10 @@ function App() {
           setUserInfo((prevState) => ({ ...prevState, login: { ...data } }));
           setLoggedIn(true);
           history.push('/');
+        }).catch((err) => {
+          console.log(err);
+          setInfoTooltipMessage('Что-то пошло не так!\nПопробуйте ещё раз.');
+          setInfoTooltipPopup(true);
         });
       }
     };
@@ -148,8 +170,8 @@ function App() {
         setUserInfo((prevState) => ({ ...prevState, ...userData }));
         setCards(initialCards);
       }).catch((err) => {
-        setInfoTooltipMessage('Что-то пошло не так!');
         console.log(err);
+        setInfoTooltipMessage('Что-то пошло не так!');
         setInfoTooltipPopup(true);
       });
     }
