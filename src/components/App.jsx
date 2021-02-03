@@ -159,6 +159,8 @@ function App() {
           history.push('/');
         }).catch((err) => {
           console.log(err);
+          setInfoTooltipMessage('Что-то пошло не так!');
+          setInfoTooltipPopup(true);
         });
       }
     };
