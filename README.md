@@ -1,4 +1,4 @@
-# Проект 11: Место Ultimate 2000 с авторизацией
+# Проект 14: Место Ultimate 2000 с авторизацией
 
 > Инстаграм клон нового поколения от Яндекс.Практикума
 
@@ -12,6 +12,8 @@ https://soradimichi.github.io/mesto-react/
 * HTML
 * API
 * Create-react-app
+* React-router-dom
+* GIT
 
 ### Установка
 $ npm install
