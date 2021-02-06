@@ -36,7 +36,7 @@ function Main({
       </section>
 
       <ul className="cards">
-        {cards.map((card) => (
+        {cards.slice(0).reverse().map((card) => (
           <Card
             card={card}
             key={card._id}

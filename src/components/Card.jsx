@@ -9,11 +9,10 @@ function Card({
 
   const currentUser = React.useContext(CurrentUserContext);
 
-  const isOwn = card.owner._id === currentUser._id;
+  const isOwn = card.owner === currentUser._id;
   const cardDeleteButtonClassName = (`card__deleteButton${isOwn ? '' : ' card__deleteButton_hidden'}`);
 
-  const isLiked = likes.some((like) => like._id === currentUser._id);
-
+  const isLiked = likes.some((like) => like === currentUser._id);
   const cardLikeButtonClassName = (`card__likeButton${isLiked ? ' card__likeButton_active' : ''}`);
 
   const handleCardClick = () => onCardClick(card);

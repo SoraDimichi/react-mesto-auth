@@ -22,10 +22,11 @@ import ImagePopup from './ImagePopup';
 
 import ProtectedRoute from './ProtectedRoute';
 import CurrentUserContext from '../contexts/CurrentUserContext';
-import api from '../utils/api';
+import Api from '../utils/api';
 import * as auth from '../utils/authApi';
 
 function App() {
+  const token = localStorage.getItem('token');
   const history = useHistory();
   const [currentUser, setUserInfo] = React.useState({ login: {} });
   const [loggedIn, setLoggedIn] = React.useState(false);
@@ -36,6 +37,60 @@ function App() {
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
   const [selectedCard, setIsSelectedCard] = React.useState(undefined);
+
+  const handleLogin = ({ email, password }) => {
+    auth.authorize(email, password).then((data) => {
+      if (data) {
+        history.push('/');
+        setLoggedIn(true);
+        setInfoTooltipMessage('Вы успешно вошли в приложение!');
+      }
+    }).catch((err) => {
+      setInfoTooltipMessage('Что-то пошло не так!\nПопробуйте ещё раз.');
+      console.log(err);
+    })
+      .finally(() => setInfoTooltipPopup(true));
+  };
+
+  const handleLogout = () => {
+    setLoggedIn(false);
+    localStorage.removeItem('token');
+  };
+
+  const api = new Api({
+    baseUrl: auth.BASE_URL,
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  React.useEffect(() => {
+    const handleTokenCheck = () => {
+      if (token) {
+        auth.checkToken(token).then((data) => {
+          setUserInfo((prevState) => ({ ...prevState, login: { ...data } }));
+          setLoggedIn(true);
+          history.push('/');
+        }).catch((err) => {
+          console.log(err);
+          setInfoTooltipMessage('Что-то пошло не так!');
+          setInfoTooltipPopup(true);
+        });
+      }
+    };
+    handleTokenCheck();
+    if (loggedIn) {
+      Promise.all([api.getUserInfo(), api.getInitialCards()]).then(([userData, initialCards]) => {
+        setUserInfo((prevState) => ({ ...prevState, ...userData }));
+        setCards(initialCards);
+      }).catch((err) => {
+        console.log(err);
+        setInfoTooltipMessage('Что-то пошло не так!');
+        setInfoTooltipPopup(true);
+      });
+    }
+  }, [loggedIn, history, token]);
 
   function handleEditProfileClick() {
     setIsEditProfilePopupOpen(true);
@@ -82,7 +137,7 @@ function App() {
 
   const handleAddPlaceSubmit = (data) => {
     api.postNewCard(data).then((newCard) => {
-      setCards([newCard, ...cards]);
+      setCards([...cards, newCard]);
       closeAllPopups();
     }).catch((err) => {
       console.log(err);
@@ -92,7 +147,7 @@ function App() {
   };
 
   const handleCardLike = (card) => {
-    const isLiked = card.likes.some((like) => like._id === currentUser._id);
+    const isLiked = card.likes.some((like) => like === currentUser._id);
     api.like(card._id, isLiked).then((newCard) => {
       const newCards = cards.map((cardIsLiked) => (
         cardIsLiked._id === card._id ? newCard : cardIsLiked
@@ -128,54 +183,6 @@ function App() {
     })
       .finally(() => setInfoTooltipPopup(true));
   };
-
-  const handleLogin = ({ email, password }) => {
-    auth.authorize(email, password).then((data) => {
-      if (data) {
-        history.push('/');
-        setLoggedIn(true);
-        setInfoTooltipMessage('Вы успешно вошли в приложение!');
-      }
-    }).catch((err) => {
-      setInfoTooltipMessage('Что-то пошло не так!\nПопробуйте ещё раз.');
-      console.log(err);
-    })
-      .finally(() => setInfoTooltipPopup(true));
-  };
-
-  const handleLogout = () => {
-    setLoggedIn(false);
-    localStorage.removeItem('token');
-  };
-
-  const token = localStorage.getItem('token');
-
-  React.useEffect(() => {
-    const handleTokenCheck = () => {
-      if (token) {
-        auth.checkToken(token).then((data) => {
-          setUserInfo((prevState) => ({ ...prevState, login: { ...data } }));
-          setLoggedIn(true);
-          history.push('/');
-        }).catch((err) => {
-          console.log(err);
-          setInfoTooltipMessage('Что-то пошло не так!');
-          setInfoTooltipPopup(true);
-        });
-      }
-    };
-    handleTokenCheck();
-    if (loggedIn) {
-      Promise.all([api.getUserInfo(), api.getInitialCards()]).then(([userData, initialCards]) => {
-        setUserInfo((prevState) => ({ ...prevState, ...userData }));
-        setCards(initialCards);
-      }).catch((err) => {
-        console.log(err);
-        setInfoTooltipMessage('Что-то пошло не так!');
-        setInfoTooltipPopup(true);
-      });
-    }
-  }, [loggedIn, history, token]);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>

@@ -1,4 +1,4 @@
-export const BASE_URL = 'https://auth.nomoreparties.co';
+export const BASE_URL = 'http://localhost:3000';
 
 const fetchData = (baseURL, path, params) => fetch(`${baseURL}${path}`, params).then((res) => {
   if (res.ok) {
@@ -22,11 +22,13 @@ export const authorize = (email, password) => fetchData(`${BASE_URL}`, '/signin'
     'Content-Type': 'application/json',
   },
   body: JSON.stringify({ email, password }),
+// eslint-disable-next-line consistent-return
 }).then((data) => {
+  console.log(data);
   if (data.token) {
     localStorage.setItem('token', data.token);
     return data;
-  } return null;
+  }
 });
 
 export const checkToken = (token) => fetchData(`${BASE_URL}`, '/users/me', {
