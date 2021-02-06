@@ -9,7 +9,7 @@
   grid-area: 1 / 2 / 2 / 3;
   display: grid;
   align-content: stretch;
-  grid-template-rows: minmax(1px, 150px) auto min-content;
+  grid-template-rows: minmax(1px, 120px) auto min-content;
 }
 
 @media screen and (max-width: 420px) {

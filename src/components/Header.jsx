@@ -6,7 +6,6 @@ import CurrentUserContext from '../contexts/CurrentUserContext';
 function Header({ loggedIn, onLogout }) {
   const currentUser = React.useContext(CurrentUserContext);
   const location = useLocation();
-
   return (
     <header className="header">
       <NavLink to="/" className="header__homeLink">
@@ -16,7 +15,7 @@ function Header({ loggedIn, onLogout }) {
         loggedIn
           ? (
             <>
-              <p className="header__email">{currentUser.login.email}</p>
+              <p className="header__email">{currentUser.email}</p>
               <button className="header__authButton" type="button" onClick={onLogout}>Выйти</button>
             </>
           )
