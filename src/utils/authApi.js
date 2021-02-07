@@ -8,12 +8,14 @@ const fetchData = (baseURL, path, params) => fetch(`${baseURL}${path}`, params).
     .then((data) => Promise.reject(new Error(`Ошибка: ${res.status}: ${data.message}`)));
 });
 
-export const register = (email, password) => fetchData(`${BASE_URL}`, '/signup', {
+export const register = (email, password, name, about, avatar) => fetchData(`${BASE_URL}`, '/signup', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
   },
-  body: JSON.stringify({ email, password }),
+  body: JSON.stringify({
+    email, password, name, about, avatar,
+  }),
 });
 
 export const authorize = (email, password) => fetchData(`${BASE_URL}`, '/signin', {

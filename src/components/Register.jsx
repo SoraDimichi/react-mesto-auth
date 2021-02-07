@@ -51,7 +51,6 @@ function Register({ onRegister }) {
               minLength="2"
               maxLength="50"
               onChange={(evt) => handleChange(evt)}
-              required
             />
           </label>
           <label className="authForm__field">

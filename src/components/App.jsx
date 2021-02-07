@@ -171,8 +171,10 @@ function App() {
     });
   };
 
-  const handleRegister = ({ email, password }) => {
-    auth.register(email, password).then((res) => {
+  const handleRegister = ({
+    email, password, name, about, avatar,
+  }) => {
+    auth.register(email, password, name, about, avatar).then((res) => {
       if (res) {
         history.push('/sign-in');
         setInfoTooltipMessage('Вы успешно зарегистрировались!');
@@ -195,16 +197,12 @@ function App() {
         />
         <main className="content">
           <Switch>
-            (
             <Route path="/sign-in">
               <Login onLogin={handleLogin} />
             </Route>
-            )
-            (
             <Route path="/sign-up">
               <Register onRegister={handleRegister} />
             </Route>
-            )
             <ProtectedRoute
               path="/"
               component={Main}
